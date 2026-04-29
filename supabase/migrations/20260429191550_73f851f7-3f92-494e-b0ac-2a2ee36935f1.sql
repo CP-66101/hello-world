@@ -1,0 +1,1 @@
+UPDATE public.site_settings SET logo_url = '/site-img/logo.webp', footer_logo_url = '/site-img/logo.webp', favicon_url = COALESCE(favicon_url, '/site-img/favicon.png') WHERE id = 1;
