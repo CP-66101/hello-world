@@ -22,15 +22,25 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-cream/85 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2">
-          <div className="grid h-12 w-12 place-items-center rounded-full gradient-pink shadow-soft">
-            <span className="font-display text-2xl font-black text-white">D</span>
-          </div>
-          <div className="leading-tight">
-            <div className="font-display text-2xl font-black tracking-tight text-foreground">
-              {settings?.site_name ?? "DONUTOO"}
-            </div>
-            <div className="font-script text-xs text-pink">freshly baked</div>
-          </div>
+          {settings?.logo_url ? (
+            <img
+              src={settings.logo_url}
+              alt={settings?.site_name ?? "Donutoo"}
+              className="h-14 w-auto object-contain"
+            />
+          ) : (
+            <>
+              <div className="grid h-12 w-12 place-items-center rounded-full gradient-pink shadow-soft">
+                <span className="font-display text-2xl font-black text-white">D</span>
+              </div>
+              <div className="leading-tight">
+                <div className="font-display text-2xl font-black tracking-tight text-foreground">
+                  {settings?.site_name ?? "DONUTOO"}
+                </div>
+                <div className="font-script text-xs text-pink">freshly baked</div>
+              </div>
+            </>
+          )}
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
