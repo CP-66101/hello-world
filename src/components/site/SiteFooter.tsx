@@ -33,13 +33,23 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-4">
         <div>
           <Link to="/" className="flex items-center gap-2">
-            <div className="grid h-12 w-12 place-items-center rounded-full gradient-pink">
-              <span className="font-display text-2xl font-black text-white">D</span>
-            </div>
-            <div>
-              <div className="font-display text-2xl font-black">{settings?.site_name ?? "DONUTOO"}</div>
-              <div className="font-script text-sm text-pink-soft">{settings?.tagline ?? "freshly baked"}</div>
-            </div>
+            {settings?.footer_logo_url || settings?.logo_url ? (
+              <img
+                src={settings.footer_logo_url || settings.logo_url || ""}
+                alt={settings?.site_name ?? "Donutoo"}
+                className="h-16 w-auto object-contain bg-white/95 rounded-lg p-2"
+              />
+            ) : (
+              <>
+                <div className="grid h-12 w-12 place-items-center rounded-full gradient-pink">
+                  <span className="font-display text-2xl font-black text-white">D</span>
+                </div>
+                <div>
+                  <div className="font-display text-2xl font-black">{settings?.site_name ?? "DONUTOO"}</div>
+                  <div className="font-script text-sm text-pink-soft">{settings?.tagline ?? "freshly baked"}</div>
+                </div>
+              </>
+            )}
           </Link>
           <p className="mt-4 text-sm leading-relaxed text-cream/70">
             Home of the original messy donuts. Baked, never fried — over 50 toppings to make it your own.
