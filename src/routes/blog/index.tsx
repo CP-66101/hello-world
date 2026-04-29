@@ -41,7 +41,7 @@ function BlogIndex() {
                   </Link>
                   <div className="p-6">
                     <time className="text-xs font-semibold uppercase tracking-widest text-pink">
-                      {new Date(p.published_at).toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" })}
+                      {new Date(p.published_at ?? p.created_at ?? Date.now()).toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" })}
                     </time>
                     <h2 className="mt-2 font-display text-xl font-bold leading-tight">
                       <Link to="/blog/$slug" params={{ slug: p.slug }} className="hover:text-pink">{p.title}</Link>

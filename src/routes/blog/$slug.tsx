@@ -43,7 +43,7 @@ function BlogDetail() {
               <header className="mt-8">
                 <div className="inline-flex items-center gap-2 rounded-full bg-pink-soft px-3 py-1 text-xs font-bold text-pink">
                   <Calendar className="h-3 w-3" />
-                  {new Date(post.published_at).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}
+                  {new Date(post.published_at ?? post.created_at ?? Date.now()).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}
                 </div>
                 <h1 className="mt-4 font-display text-4xl font-black leading-tight sm:text-5xl">{post.title}</h1>
               </header>
