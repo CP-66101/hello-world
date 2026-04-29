@@ -120,7 +120,7 @@ export function SiteFooter() {
       <div className="border-t border-white/10 py-6 text-center text-xs text-cream/50">
         © {new Date().getFullYear()} {settings?.site_name ?? "Donutoo"}. All rights reserved.
         <span className="mx-2">·</span>
-        <Link to="/admin/login" className="hover:text-pink-soft">Admin</Link>
+        <Link to="/admin" className="hover:text-pink-soft">Admin</Link>
       </div>
     </footer>
   );
