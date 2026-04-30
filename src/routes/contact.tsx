@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, Breadcrumb } from "@/components/site/SiteLayout";
-import { useSiteSettings } from "@/lib/content";
+import { useSiteSettings, usePageBlocks } from "@/lib/content";
 import { Mail, MapPin, Phone, Send, Clock } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
@@ -29,6 +29,8 @@ const schema = z.object({
 
 function ContactPage() {
   const { data: settings } = useSiteSettings();
+  const { data: blocks = [] } = usePageBlocks("contact");
+  const branches = blocks.filter((b: any) => b.block_key?.startsWith("branch_"));
   const [pending, setPending] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
 
@@ -47,6 +49,22 @@ function ContactPage() {
   return (
     <SiteLayout>
       <Breadcrumb title="Contact Us" subtitle="say hello" />
+
+      {branches.length > 0 && (
+        <section className="bg-cream py-16">
+          <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-2">
+            {branches.map((b: any) => (
+              <div key={b.id} className="rounded-3xl bg-white p-8 shadow-soft">
+                <p className="font-script text-xl text-pink">our branch</p>
+                <h2 className="mt-1 font-display text-3xl font-black">{b.heading}</h2>
+                {b.subheading && <p className="mt-1 text-sm font-semibold text-muted-foreground">{b.subheading}</p>}
+                <div className="mt-4 whitespace-pre-line text-sm text-foreground/80">{b.body}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="bg-cream py-20">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-5">
           <aside className="lg:col-span-2">
