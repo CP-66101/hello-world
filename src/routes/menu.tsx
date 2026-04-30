@@ -103,10 +103,14 @@ function MenuPage() {
                       <div className="p-5">
                         <h3 className="font-display text-lg font-bold leading-tight">{it.name}</h3>
                         {it.description && <p className="mt-1 text-xs text-muted-foreground line-clamp-2">{it.description}</p>}
-                        {it.price != null && (
+                        {it.price != null ? (
                           <div className="mt-3 flex items-baseline gap-1">
                             <span className="font-display text-2xl font-black text-pink">{Number(it.price).toFixed(0)}</span>
                             <span className="text-xs font-semibold text-muted-foreground">{it.currency ?? "EGP"}</span>
+                          </div>
+                        ) : (
+                          <div className="mt-3 inline-block rounded-full bg-mint-soft px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-mint">
+                            Included
                           </div>
                         )}
                       </div>
