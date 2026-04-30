@@ -130,6 +130,7 @@ export type Database = {
           image_url: string | null
           is_active: boolean
           name: string
+          name_ar: string | null
           sort_order: number
         }
         Insert: {
@@ -139,6 +140,7 @@ export type Database = {
           image_url?: string | null
           is_active?: boolean
           name: string
+          name_ar?: string | null
           sort_order?: number
         }
         Update: {
@@ -148,6 +150,7 @@ export type Database = {
           image_url?: string | null
           is_active?: boolean
           name?: string
+          name_ar?: string | null
           sort_order?: number
         }
         Relationships: []
@@ -163,7 +166,11 @@ export type Database = {
           image_url: string | null
           is_active: boolean
           name: string
+          name_ar: string | null
           price: number | null
+          price_secondary: number | null
+          size_label: string | null
+          size_label_secondary: string | null
           sort_order: number
         }
         Insert: {
@@ -176,7 +183,11 @@ export type Database = {
           image_url?: string | null
           is_active?: boolean
           name: string
+          name_ar?: string | null
           price?: number | null
+          price_secondary?: number | null
+          size_label?: string | null
+          size_label_secondary?: string | null
           sort_order?: number
         }
         Update: {
@@ -189,7 +200,11 @@ export type Database = {
           image_url?: string | null
           is_active?: boolean
           name?: string
+          name_ar?: string | null
           price?: number | null
+          price_secondary?: number | null
+          size_label?: string | null
+          size_label_secondary?: string | null
           sort_order?: number
         }
         Relationships: [
