@@ -66,6 +66,8 @@ function MenuPage() {
         </div>
       </section>
 
+      <SignatureFlavours />
+
       <section className="bg-cream pb-24">
         <div className="mx-auto max-w-7xl space-y-20 px-6">
           {visibleCats.map((cat: any, idx: number) => {
