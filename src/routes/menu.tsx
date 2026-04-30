@@ -66,6 +66,8 @@ function MenuPage() {
         </div>
       </section>
 
+      <SignatureFlavours />
+
       <section className="bg-cream pb-24">
         <div className="mx-auto max-w-7xl space-y-20 px-6">
           {visibleCats.map((cat: any, idx: number) => {
@@ -101,10 +103,14 @@ function MenuPage() {
                       <div className="p-5">
                         <h3 className="font-display text-lg font-bold leading-tight">{it.name}</h3>
                         {it.description && <p className="mt-1 text-xs text-muted-foreground line-clamp-2">{it.description}</p>}
-                        {it.price != null && (
+                        {it.price != null ? (
                           <div className="mt-3 flex items-baseline gap-1">
                             <span className="font-display text-2xl font-black text-pink">{Number(it.price).toFixed(0)}</span>
                             <span className="text-xs font-semibold text-muted-foreground">{it.currency ?? "EGP"}</span>
+                          </div>
+                        ) : (
+                          <div className="mt-3 inline-block rounded-full bg-mint-soft px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-mint">
+                            Included
                           </div>
                         )}
                       </div>
@@ -125,3 +131,36 @@ function MenuPage() {
     </SiteLayout>
   );
 }
+
+const SIGNATURE_FLAVOURS = [
+  { name: "Coconut Delight", ar: "كوكونت ديليت", img: "https://donutoo.com/images/Upload/category/1735506302.png" },
+  { name: "Very Berry Biscuit Cream", ar: "فيري بيري بسكت كريم", img: "https://donutoo.com/images/Upload/category/789675300.png" },
+  { name: "Triple Chocolate", ar: "تريبل شوكوليت", img: "https://donutoo.com/images/Upload/category/1380810696.png" },
+  { name: "Choconut", ar: "شوكونت", img: "https://donutoo.com/images/Upload/category/1464273811.png" },
+  { name: "Espresso Biscuit Cream", ar: "اسبريسو بسكت كريم", img: "https://donutoo.com/images/Upload/category/925884526.png" },
+  { name: "Hazel & Nutz", ar: "هيزل و نتس", img: "https://donutoo.com/images/Upload/category/368415500.png" },
+];
+
+function SignatureFlavours() {
+  return (
+    <section className="bg-white py-16">
+      <div className="mx-auto max-w-7xl px-6 text-center">
+        <p className="font-script text-2xl text-pink">add 5 EGP each</p>
+        <h2 className="font-display text-3xl font-black sm:text-4xl">Signature Flavours</h2>
+        <p className="mt-2 text-sm text-muted-foreground">Vegan sweet donuts also available</p>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+          {SIGNATURE_FLAVOURS.map((f) => (
+            <div key={f.name} className="rounded-3xl bg-cream p-4 shadow-soft transition-transform hover:-translate-y-1">
+              <div className="mx-auto aspect-square w-full overflow-hidden rounded-2xl bg-white">
+                <img src={f.img} alt={f.name} className="h-full w-full object-contain p-2" />
+              </div>
+              <div className="mt-3 font-display text-sm font-black leading-tight">{f.name}</div>
+              <div className="text-xs text-muted-foreground" dir="rtl">{f.ar}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
