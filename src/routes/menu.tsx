@@ -76,7 +76,7 @@ function MenuPage() {
 
       <section className="bg-cream pb-24 pt-16">
         <div className="mx-auto max-w-7xl space-y-12 px-4 sm:px-6">
-          {LAYOUT_ORDER.reduce<JSX.Element[]>((rows, key, idx, arr) => {
+          {LAYOUT_ORDER.reduce<React.ReactElement[]>((rows, key, idx, arr) => {
             if (key === "__SIGNATURE__") {
               rows.push(<SignatureFlavours key="sig" />);
               return rows;
